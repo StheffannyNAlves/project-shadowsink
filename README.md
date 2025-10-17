@@ -68,8 +68,8 @@ Este projeto segue um plano de execução faseado em Sprints. **A execução ain
 
 | Sprint | Objetivo Principal | Status |
 | :--- | :--- | :--- |
-| **Sprint 0** | Preparação do Terreno e Estrutura do Projeto | 📝 Planeado |
-| **Sprint 1** | Construção da Fachada (Página de Login) | 📝 Planeado |
+| **Sprint 0** | Preparação do Terreno e Estrutura do Projeto | Concluído |
+| **Sprint 1** | Construção da Fachada (Página de Login) | Em Execução |
 | **Sprint 2** | Implementação da Armadilha Básica (Captura de Credenciais) | 📝 Planeado |
 | **Sprint 3** | A Sala de Interrogatório (Logging Forense de Interações) | 📝 Planeado |
 | **Sprint 4** | O Replay (Desenvolvimento do Dashboard de Análise) | 📝 Planeado |
