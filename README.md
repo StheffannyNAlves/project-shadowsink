@@ -70,9 +70,9 @@ Este projeto segue um plano de execução faseado em Sprints. **A execução ain
 | :--- | :--- | :--- |
 | **Sprint 0** | Preparação do Terreno e Estrutura do Projeto | Concluído |
 | **Sprint 1** | Construção da Fachada (Página de Login) | Em Execução |
-| **Sprint 2** | Implementação da Armadilha Básica (Captura de Credenciais) | 📝 Planeado |
-| **Sprint 3** | A Sala de Interrogatório (Logging Forense de Interações) | 📝 Planeado |
-| **Sprint 4** | O Replay (Desenvolvimento do Dashboard de Análise) | 📝 Planeado |
-| **Sprint 5** | Métricas e Inteligência (Análise Estatística de Comportamento) | 📝 Planeado |
+| **Sprint 2** | Implementação da Armadilha Básica (Captura de Credenciais) | 📝 Planejado |
+| **Sprint 3** | A Sala de Interrogatório (Logging Forense de Interações) | 📝 Planejado |
+| **Sprint 4** | O Replay (Desenvolvimento do Dashboard de Análise) | 📝 Planejado |
+| **Sprint 5** | Métricas e Inteligência (Análise Estatística de Comportamento) | 📝 Planejado |
 
 ```eof
