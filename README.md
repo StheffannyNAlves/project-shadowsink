@@ -77,7 +77,7 @@ shadow-sink/
 │
 └── docs/
     └── ...
-
+```
 
 ## Como Executar
 
@@ -87,7 +87,7 @@ shadow-sink/
    ```bash
    git clone https://github.com/StheffannyNAlves/project-shadowsink.git
    cd shadow-sink
-
+   ```
 
 
 2. **Crie e ative o ambiente virtual**
