@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>FortPay - Merchant Administrative Gateway</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        
+        <header>
+            <h1>FortPay - Merchant Administrative Gateway</h1>
+            <p>Faça login para acessar o console de administração.</p>
+        </header>
+
+        <form action="/handle_login" method="POST">
+
+            <div class="input-group">
+                <label for="username">ID do Operador</label> 
+                <input type="text" id="username" name="username" placeholder="Insira seu ID" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha de Acesso</label>
+                <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
+            </div>
+
+            <div class="forgot-password">
+                <a href="#">Esqueceu a Senha? Contate o Suporte.</a>
+            </div>
+
+            <button type="submit" class="btn-login">
+                Autenticar
+            </button>
+            
+        </form>
+
+        <hr> 
+        
+        <footer>
+            <p class="warning-text">For authorized partners only. **All access attempts are logged and monitored.**</p>
+            <p class="copyright">© 2025 FortPay Corporate Systems. All rights reserved.</p>
+        </footer>
+        
+    </div>
+
+</body>
+</html>
