@@ -78,17 +78,19 @@ shadow-sink/
 └── docs/
     └── ...
 
+
 ## Como Executar
 
-1. **Clone o repositório**
+
+1. ** Clone o repositório**
 
    ```bash
-   git clone <url-do-seu-repositorio>
+   git clone https://github.com/StheffannyNAlves/project-shadowsink.git
    cd shadow-sink
-   ```
+
+
 
 2. **Crie e ative o ambiente virtual**
-
    ```bash
    python3 -m venv venv
    source venv/bin/activate
