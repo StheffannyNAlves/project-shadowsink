@@ -1,26 +1,42 @@
-body {
-    /* Define a fonte de sistema para um visual clean */
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f0f2f5; /* Cinza suave, comum em sistemas de UI */
-    display: flex; /* Centraliza o conteúdo (login-container) */
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Ocupa a altura total da tela */
+/* ===== Reset básico ===== */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Garante que o formulário e os grupos de entrada ocupem a largura total */
+/* ===== Corpo da página ===== */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Fonte clean */
+    background-color: #f0f2f5; /* Cinza suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Altura total da tela */
+}
+
+/* ===== Container do formulário ===== */
+.login-container {
+    width: 100%;
+    max-width: 400px; /* Limita o tamanho em telas grandes */
+    padding: 30px 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Formulário ===== */
 form {
     text-align: left;
 }
 
+/* Grupo de inputs */
 .input-group {
     margin-bottom: 15px;
 }
 
 .input-group label {
-    display: block; /* Garante que o label fique acima do input */
+    display: block;
     margin-bottom: 5px;
     font-weight: bold;
     color: #444;
@@ -33,21 +49,22 @@ form {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
     font-size: 1em;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Foco sutil ao clicar */
+/* Foco sutil */
 .input-group input:focus {
-    border-color: #007bff; /* Cor corporativa: Azul */
+    border-color: #007bff;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
 }
 
+/* ===== Botão ===== */
 .btn-login {
     width: 100%;
     padding: 12px;
-    background-color: #007bff; /* Azul clássico de ação */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -55,25 +72,32 @@ form {
     font-weight: bold;
     cursor: pointer;
     margin-top: 15px;
-    transition: background-color 0.2s; /* Efeito suave ao passar o mouse */
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .btn-login:hover {
     background-color: #0056b3;
+    transform: translateY(-1px); /* Feedback visual sutil */
 }
 
+/* ===== Esqueceu a senha ===== */
 .forgot-password {
     text-align: right;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin: 5px 0 15px 0;
     font-size: 0.85em;
 }
 
 .forgot-password a {
     color: #007bff;
     text-decoration: none;
+    transition: text-decoration 0.2s;
 }
 
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Linha separadora ===== */
 hr {
     border: 0;
     height: 1px;
@@ -81,14 +105,22 @@ hr {
     margin: 20px 0;
 }
 
+/* ===== Rodapé ===== */
 footer {
     font-size: 0.75em;
     color: #888;
     line-height: 1.4;
+    text-align: center;
 }
 
-/* Dá destaque ao aviso de monitoramento */
 footer p.warning-text {
     font-weight: bold; 
     color: #555; 
+}
+
+/* ===== Responsividade mínima ===== */
+@media (max-width: 450px) {
+    .login-container {
+        padding: 25px 20px;
+    }
 }
