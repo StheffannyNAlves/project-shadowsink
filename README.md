@@ -157,7 +157,7 @@ shadow-sink/
    O honeypot estará acessível em:
    👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
-## 🎨 Identidade Visual
+## Identidade Visual
 
 Tema: **Sala de Interrogatório Digital**
 Estilo: minimalista, técnico.
@@ -165,7 +165,7 @@ Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
 Fonte: monoespaçada (Consolas, JetBrains Mono).
 Foco em contraste, legibilidade e atmosfera "noir corporativa".
 
-## 🔮 Extensões Futuras
+## Extensões Futuras
 
 * Integração com **ELK Stack** (ElasticSearch + Kibana)
 * **API REST** (`/api/sessions`) para análise remota
@@ -175,7 +175,7 @@ Foco em contraste, legibilidade e atmosfera "noir corporativa".
 * **Sandbox local** para simulação de ataques automatizados
 * **CLI Forense** (`shadowcli analyze evidence_*.json`)
 
-## ⚠️ Aviso de Segurança
+## Aviso de Segurança
 
 Este projeto é **apenas para pesquisa e educação em cibersegurança**.
 **Nunca** execute em redes públicas, ambientes de produção ou máquinas corporativas.
@@ -183,15 +183,15 @@ Utilize **somente em laboratórios isolados** (máquinas virtuais ou redes sandb
 
 O autor **não se responsabiliza por uso indevido**.
 
-## 📜 Licença
+## Licença
 
 Distribuído sob a licença **MIT**.
 Consulte o arquivo `LICENSE` para mais detalhes.
 
-## 👩🏿‍💻 Autor
+## Autor
 
 **Stheffanny Nascimento**
 Engenharia de Computação UEFS
 Cibersegurança • Forense Digital • Engenharia Reversa
 
-📦 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
+Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
