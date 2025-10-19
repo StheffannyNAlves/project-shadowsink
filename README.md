@@ -8,24 +8,24 @@
 ![SQLite](https://img.shields.io/badge/sqlite-07405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
-## 🧠 Visão Geral
+## Visão Geral
 
 **Shadow Sink** é um honeypot interativo desenvolvido em **Flask**, projetado para capturar, registrar e reproduzir o comportamento de invasores em páginas de login falsas.  
 Combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para registrar cada detalhe da interação do atacante do clique à digitação.
 
 Destinado a **analistas, pentesters e estudantes** que buscam compreender a psicologia e a técnica por trás das intrusões, sem riscos reais.
 
-## ⚙️ Principais Funcionalidades
+## Principais Funcionalidades
 
-- **🪞 Modo Espelho** coleta tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
-- **🎞️ Replay Visual 2.0** converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
-- **🧩 Fingerprints e Metadados** coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
-- **🧾 Módulo Sentinel (Forense Integrado)** gera hashes SHA256 por evento, relatórios JSON e um "saco de provas" completo com logs e timestamps.  
-- **🎓 Modo Treino** alterna entre:
+- **Modo Espelho** coleta tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
+- **Replay Visual 2.0** converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
+- **Fingerprints e Metadados** coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
+- **Módulo Sentinel (Forense Integrado)** gera hashes SHA256 por evento, relatórios JSON e um "saco de provas" completo com logs e timestamps.  
+- **Modo Treino** alterna entre:
   - `capture_mode = True`: coleta real de dados;
   - `training_mode = True`: simulação de sessões para demonstrações.
 
-## 🧩 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```bash
 shadow-sink/
@@ -58,7 +58,7 @@ shadow-sink/
     └── ...
 ```
 
-## 🚧 Status do Desenvolvimento
+## Status do Desenvolvimento
 
 > **Fase atual:** Arquitetura *Sprint 1/6*  
 > O projeto está em estruturação. O foco é construir a fundação e a fachada antes do sistema forense.
@@ -96,7 +96,7 @@ shadow-sink/
   </tr>
 </table>
 
-## 🛠️ Tecnologias Principais
+## Tecnologias Principais
 
 | Categoria     | Tecnologias |
 |----------------|-------------|
@@ -171,6 +171,7 @@ Foco em contraste, legibilidade e atmosfera "noir corporativa".
 * **API REST** (`/api/sessions`) para análise remota
 * **Docker** container para deploy isolado
 * **AI Witness** sumarização automatizada via IA
+* **Detecção de Bots (RL)** Implementação de algoritmos de Reinforcement Learning para analisar padrões de digitação e aprimorar, em tempo real, a detecção entre bots e humanos.
 * **Sandbox local** para simulação de ataques automatizados
 * **CLI Forense** (`shadowcli analyze evidence_*.json`)
 
