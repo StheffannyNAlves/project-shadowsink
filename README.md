@@ -171,7 +171,7 @@ shadow-sink/
 * **API REST** (`/api/sessions`) para análise remota
 * **Docker** container para deploy isolado
 * **AI Witness** sumarização automatizada via IA
-* **Detecção de Bots (RL)** Implementação de algoritmos de Reinforcement Learning para analisar padrões de digitação e aprimorar, em tempo real, a detecção entre bots e humanos.
+* **Detecção de Bots (RL)**: Implementação de algoritmos de Reinforcement Learning para analisar padrões de digitação e aprimorar, em tempo real, a detecção entre bots e humanos.
 * **Sandbox local** para simulação de ataques automatizados
 * **CLI Forense** (`shadowcli analyze evidence_*.json`)
 
@@ -192,8 +192,6 @@ Consulte o arquivo `LICENSE` para mais detalhes.
 
 **Stheffanny Nascimento**
 Engenharia de Computação UEFS
--Cibersegurança  
--Forense Digital 
--Engenharia Reversa
+-Cibersegurança, Forense Digital, Engenharia Reversa
 
 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
