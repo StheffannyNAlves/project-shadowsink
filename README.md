@@ -121,15 +121,15 @@ shadow-sink/
 
 1. **Clone o repositório**
 
-   ```bash
+```bash
    git clone https://github.com/StheffannyNAlves/project-shadowsink.git
    cd project-shadowsink
-  ```
+```
 
 
 2. **Crie e ative o ambiente virtual**
 
-   ```bash
+```bash
    python3 -m venv venv
    
      # Linux/macOS
@@ -137,13 +137,13 @@ shadow-sink/
    
      # PowerShell (Windows)
    .\venv\Scripts\activate
-   ```
+```
 
 3. **Instale as dependências**
 
-   ```bash
+ ```bash
    pip install -r requirements.txt
-   ```
+```
 
 4. **Configure a aplicação Flask**
 
