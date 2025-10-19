@@ -1,13 +1,11 @@
-/* ================================
+/* 
    FortPay - Merchant Admin Gateway
    Theme: Moderno-Tech (Institucional, escuro)
    Palette: preto / grafite / laranja profundo (#e67300)
-   ================================ */
+    */
 
-/* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Fonte fallback */
 :root {
   --accent: #e67300;
   --accent-dark: #b85c00;
@@ -18,7 +16,6 @@
   --text: #e6e6e6;
 }
 
-/* Base */
 body {
   font-family: "Poppins", "Inter", Arial, sans-serif;
   background: linear-gradient(150deg, var(--bg-1) 30%, var(--bg-2) 100%);
@@ -30,7 +27,6 @@ body {
   padding: 24px;
 }
 
-/* Container */
 .login-container {
   width: 100%;
   max-width: 420px;
@@ -42,7 +38,6 @@ body {
   animation: containerEntrance 420ms cubic-bezier(.2,.9,.3,1);
 }
 
-/* Header */
 .login-header { text-align: center; margin-bottom: 18px; }
 .login-header svg { display: block; margin: 0 auto 10px; width: 280px; height: 85px; cursor: default; }
 .login-header h1 {
@@ -58,10 +53,8 @@ body {
   margin-top: 0;
 }
 
-/* Formulario */
 form { margin-top: 6px; }
 
-/* Input group */
 .input-group { margin-bottom: 16px; text-align: left; }
 .input-group label {
   display: block;
@@ -97,7 +90,6 @@ form { margin-top: 6px; }
 }
 .forgot-password a:hover { text-decoration: underline; }
 
-/* Button */
 .btn-login {
   width: 100%;
   padding: 12px;
@@ -116,27 +108,23 @@ form { margin-top: 6px; }
   box-shadow: 0 12px 30px rgba(184,92,0,0.18);
 }
 
-/* Divider */
 hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent); margin: 22px 0; }
 
-/* Footer */
 footer { text-align: center; font-size: 0.82rem; color: #888; line-height: 1.4; }
 footer .warning-text { color: var(--accent); font-weight: 700; margin-bottom: 6px; display:block; }
 
-/* Small devices */
 @media (max-width: 480px) {
   .login-container { padding: 26px 18px; width: 96%; }
   .login-header svg { width: 220px; height: 68px; }
   .login-header h1 { font-size: 1.02rem; }
 }
 
-/* Entrance animation */
+/* animation */
 @keyframes containerEntrance {
   from { opacity: 0; transform: translateY(10px) scale(0.998); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Optional: subtle background noise for realism (unobtrusive) */
 body::after {
   content: "";
   position: fixed;
