@@ -1,35 +1,29 @@
 # 🕶️ Shadow Sink: Operação Espelho
 
 > "Não é um site. É uma sala de interrogatório digital."  
-> “Cada clique é uma confissão. Cada linha de código, um interrogatório.”
+> "Cada clique é uma confissão. Cada linha de código, um interrogatório."
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![SQLite](https://img.shields.io/badge/sqlite-07405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
----
-
 ## 🧠 Visão Geral
 
 **Shadow Sink** é um honeypot interativo desenvolvido em **Flask**, projetado para capturar, registrar e reproduzir o comportamento de invasores em páginas de login falsas.  
-Combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para registrar cada detalhe da interação do atacante — do clique à digitação.
+Combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para registrar cada detalhe da interação do atacante do clique à digitação.
 
 Destinado a **analistas, pentesters e estudantes** que buscam compreender a psicologia e a técnica por trás das intrusões, sem riscos reais.
 
----
-
 ## ⚙️ Principais Funcionalidades
 
-- **🪞 Modo Espelho** — captura tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
-- **🎞️ Replay Visual 2.0** — converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
-- **🧩 Fingerprints e Metadados** — coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
-- **🧾 Módulo Sentinel (Forense Integrado)** — gera hashes SHA256 por evento, relatórios JSON e um “saco de provas” completo com logs e timestamps.  
-- **🎓 Modo Treino** — alterna entre:
+- **🪞 Modo Espelho** coleta tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
+- **🎞️ Replay Visual 2.0** converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
+- **🧩 Fingerprints e Metadados** coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
+- **🧾 Módulo Sentinel (Forense Integrado)** gera hashes SHA256 por evento, relatórios JSON e um "saco de provas" completo com logs e timestamps.  
+- **🎓 Modo Treino** alterna entre:
   - `capture_mode = True`: coleta real de dados;
   - `training_mode = True`: simulação de sessões para demonstrações.
-
----
 
 ## 🧩 Estrutura do Projeto
 
@@ -64,11 +58,9 @@ shadow-sink/
     └── ...
 ```
 
-
-
 ## 🚧 Status do Desenvolvimento
 
-> **Fase atual:** Arquitetura — *Sprint 1/6*  
+> **Fase atual:** Arquitetura *Sprint 1/6*  
 > O projeto está em estruturação. O foco é construir a fundação e a fachada antes do sistema forense.
 
 <table>
@@ -90,7 +82,7 @@ shadow-sink/
   <tr>
     <td>⚠️ Captura Ativa</td>
     <td><b>Sprint 2: A Armadilha</b></td>
-    <td>Rotas de login capturam credenciais via POST, simulam falha e registram IP — dados ainda salvos apenas em log de console.</td>
+    <td>Rotas de login capturam credenciais via POST, simulam falha e registram IP dados ainda salvos apenas em log de console.</td>
   </tr>
   <tr>
     <td>❌ Pendente</td>
@@ -104,8 +96,6 @@ shadow-sink/
   </tr>
 </table>
 
----
-
 ## 🛠️ Tecnologias Principais
 
 | Categoria     | Tecnologias |
@@ -115,8 +105,6 @@ shadow-sink/
 | **Forense** | Módulo Sentinel (SHA256 Hashing, JSON Reports) |
 | **Análise** | Replay Visual 2.0 (JS/HTML), Fingerprinting Comportamental |
 
----
-
 ## 💻 Como Executar (modo desenvolvimento)
 
 1. **Clone o repositório**
@@ -125,7 +113,6 @@ shadow-sink/
    git clone https://github.com/StheffannyNAlves/project-shadowsink.git
    cd project-shadowsink
 ```
-
 
 2. **Crie e ative o ambiente virtual**
 
@@ -170,28 +157,22 @@ shadow-sink/
    O honeypot estará acessível em:
    👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
----
-
 ## 🎨 Identidade Visual
 
 Tema: **Sala de Interrogatório Digital**
 Estilo: minimalista, sombrio, técnico.
 Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
 Fonte: monoespaçada (Consolas, JetBrains Mono).
-Foco em contraste, legibilidade e atmosfera “noir corporativa”.
-
----
+Foco em contraste, legibilidade e atmosfera "noir corporativa".
 
 ## 🔮 Extensões Futuras
 
 * Integração com **ELK Stack** (ElasticSearch + Kibana)
 * **API REST** (`/api/sessions`) para análise remota
 * **Docker** container para deploy isolado
-* **AI Witness** — sumarização automatizada via IA
+* **AI Witness** sumarização automatizada via IA
 * **Sandbox local** para simulação de ataques automatizados
 * **CLI Forense** (`shadowcli analyze evidence_*.json`)
-
----
 
 ## ⚠️ Aviso de Segurança
 
@@ -201,23 +182,15 @@ Utilize **somente em laboratórios isolados** (máquinas virtuais ou redes sandb
 
 O autor **não se responsabiliza por uso indevido**.
 
----
-
 ## 📜 Licença
 
 Distribuído sob a licença **MIT**.
 Consulte o arquivo `LICENSE` para mais detalhes.
 
----
-
 ## 👩🏿‍💻 Autor
 
 **Stheffanny Nascimento**
-Engenharia de Computação — UEFS
+Engenharia de Computação UEFS
 Cibersegurança • Forense Digital • Engenharia Reversa
 
 📦 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
-
----
-
-
