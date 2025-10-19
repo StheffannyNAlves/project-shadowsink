@@ -1,4 +1,4 @@
-# 🕶️ Shadow Sink — Operação Espelho
+# 🕶️ Shadow Sink: Operação Espelho
 
 > "Não é um site. É uma sala de interrogatório digital."  
 > “Cada clique é uma confissão. Cada linha de código, um interrogatório.”
@@ -58,7 +58,7 @@ shadow-sink/
 │   └── database.db
 │
 ├── reports/
-│   └── evidence_<session_id>.json
+│   └── evidence_session.json
 │
 └── docs/
     └── ...
@@ -130,9 +130,12 @@ shadow-sink/
 
    ```bash
    python3 -m venv venv
-   source venv/bin/activate        # Linux/macOS
-   # PowerShell (Windows)
-   # .\venv\Scripts\activate
+   
+     # Linux/macOS
+   source venv/bin/activate        
+   
+     # PowerShell (Windows)
+   .\venv\Scripts\activate
    ```
 
 3. **Instale as dependências**
