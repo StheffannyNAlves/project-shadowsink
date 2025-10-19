@@ -126,6 +126,7 @@ shadow-sink/
    cd project-shadowsink
   ```
 
+
 2. **Crie e ative o ambiente virtual**
 
    ```bash
