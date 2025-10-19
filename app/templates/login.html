@@ -1,48 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>FortPay - Merchant Administrative Gateway</title> 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <title>FortPay - Merchant Administrative Gateway</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="login-container">
-        
-        <header>
-            <h1>FortPay - Merchant Administrative Gateway</h1>
-            <p>Faça login para acessar o console de administração.</p>
-        </header>
+  <div class="login-container">
 
-        <form action="/handle_login" method="POST">
+    <!-- HEADER com SVG embutido (ANIMADO) -->
+    <header class="login-header" aria-hidden="false">
+      <!-- FortPay - Logo institucional animado (inline SVG para garantir animações) -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 110" width="280" height="85" role="img" aria-labelledby="fpTitle fpDesc">
+        <title id="fpTitle">FortPay Corporate Systems - Logo</title>
+        <desc id="fpDesc">Escudo institucional com circuitos internos e o texto FortPay surgindo com brilho em laranja queimado.</desc>
 
-            <div class="input-group">
-                <label for="username">ID do Operador</label> 
-                <input type="text" id="username" name="username" placeholder="Insira seu ID" required>
-            </div>
+        <style>
+          .shield-stroke {
+            fill: #0d0d0d;
+            stroke: #e67300;
+            stroke-width: 2.8;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            stroke-dasharray: 260;
+            stroke-dashoffset: 260;
+            animation: drawShield 1.6s ease forwards;
+          }
+          .circuit {
+            stroke: #e67300;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0;
+            filter: drop-shadow(0 0 6px rgba(230,115,0,0.25));
+            animation: circuitOn 1s ease 1.6s forwards;
+          }
+          .shield-fill {
+            fill: #111111;
+            opacity: 0;
+            animation: fillIn 0.6s ease 1.4s forwards;
+          }
+          .text-fort {
+            fill: #e67300;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform-origin: 0 0;
+            animation: textIn 0.6s ease 2.2s forwards;
+          }
+          .text-pay {
+            fill: #e0e0e0;
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: textIn 0.6s ease 2.4s forwards;
+          }
+          .sub {
+            fill: #8b8b8b;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: textIn 0.5s ease 2.8s forwards;
+          }
+          .line {
+            fill: #2a2a2a;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 3s forwards;
+          }
+          svg:hover .circuit,
+          svg:focus .circuit {
+            filter: drop-shadow(0 0 12px rgba(230,115,0,0.45));
+            opacity: 1;
+            transition: filter 0.25s;
+          }
+          svg:hover .text-fort { filter: drop-shadow(0 0 6px rgba(230,115,0,0.3)); }
 
-            <div class="input-group">
-                <label for="password">Senha de Acesso</label>
-                <input type="password" id="password" name="password" placeholder="Insira sua senha" required>
-            </div>
+          @keyframes drawShield { to { stroke-dashoffset: 0; } }
+          @keyframes circuitOn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+          @keyframes fillIn { to { opacity: 1; } }
+          @keyframes textIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        </style>
 
-            <div class="forgot-password">
-                <a href="#">Esqueceu a Senha? Contate o Suporte.</a>
-            </div>
+        <g transform="translate(20,12)">
+          <path class="shield-stroke" d="M40 2 L80 18 L78 50 L40 72 L2 50 L0 18 Z"/>
+          <path class="shield-fill"  d="M40 6 L76 20 L74 48 L40 68 L6 48 L4 20 Z"/>
+          <path class="circuit" d="M22 34 H58" />
+          <path class="circuit" d="M40 18 V56" />
+          <path class="circuit" d="M30 46 H50" />
+          <circle class="circuit" cx="22" cy="34" r="1.6"/>
+          <circle class="circuit" cx="58" cy="34" r="1.6"/>
+        </g>
 
-            <button type="submit" class="btn-login">
-                Autenticar
-            </button>
-            
-        </form>
+        <text x="140" y="46" class="text-fort">Fort</text>
+        <text x="215" y="46" class="text-pay">Pay</text>
+        <text x="142" y="68" class="sub">Corporate Systems</text>
+        <rect class="line" x="142" y="74" width="160" height="2" />
+      </svg>
 
-        <hr> 
-        
-        <footer>
-            <p class="warning-text">For authorized partners only. **All access attempts are logged and monitored.**</p>
-            <p class="copyright">© 2025 FortPay Corporate Systems. All rights reserved.</p>
-        </footer>
-        
-    </div>
+      <h1>Merchant Administrative Gateway</h1>
+      <p>Acesso restrito. Autenticação obrigatória para operadores FortPay autorizados.</p>
+    </header>
 
+    <!-- FORMULÁRIO -->
+    <form action="/handle_login" method="POST" autocomplete="off" novalidate>
+      <div class="input-group">
+        <label for="username">ID do Operador</label>
+        <input type="text" id="username" name="username" placeholder="Insira seu ID" required autocomplete="username" />
+      </div>
+
+      <div class="input-group">
+        <label for="password">Senha de Acesso</label>
+        <input type="password" id="password" name="password" placeholder="Insira sua senha" required autocomplete="current-password" />
+      </div>
+
+      <div class="forgot-password">
+        <a href="#">Esqueceu a Senha? Contate o Suporte.</a>
+      </div>
+
+      <button type="submit" class="btn-login">Autenticar</button>
+    </form>
+
+    <hr />
+
+    <footer>
+      <span class="warning-text">For authorized partners only.</span>
+      <div>All access attempts are logged and monitored.</div>
+      <div style="margin-top:8px; color:#666; font-size:0.85rem">© 2025 FortPay Corporate Systems. All rights reserved.</div>
+    </footer>
+
+  </div>
 </body>
 </html>

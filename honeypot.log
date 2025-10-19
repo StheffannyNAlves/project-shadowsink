@@ -6,3 +6,10 @@
 2025-10-19 00:19:11,075 - INFO - IP:192.168.0.156 - - [19/Oct/2025 00:19:11] "GET / HTTP/1.1" 200 -
 2025-10-19 00:19:11,161 - INFO - IP:192.168.0.156 - - [19/Oct/2025 00:19:11] "GET /static/css/style.css HTTP/1.1" 200 -
 2025-10-19 00:19:11,313 - INFO - IP:192.168.0.156 - - [19/Oct/2025 00:19:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-19 01:17:39,416 - INFO - IP:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:5000
+ * Running on https://192.168.0.156:5000
+2025-10-19 01:17:39,417 - INFO - IP:[33mPress CTRL+C to quit[0m
+2025-10-19 01:18:25,506 - INFO - IP:192.168.0.156 - - [19/Oct/2025 01:18:25] "GET / HTTP/1.1" 200 -
+2025-10-19 01:18:25,612 - INFO - IP:192.168.0.156 - - [19/Oct/2025 01:18:25] "GET /static/css/style.css HTTP/1.1" 200 -

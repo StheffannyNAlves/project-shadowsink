@@ -1,126 +1,149 @@
-/* ===== Reset básico ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ================================
+   FortPay - Merchant Admin Gateway
+   Theme: Moderno-Tech (Institucional, escuro)
+   Palette: preto / grafite / laranja profundo (#e67300)
+   ================================ */
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Fonte fallback */
+:root {
+  --accent: #e67300;
+  --accent-dark: #b85c00;
+  --bg-1: #0d0d0d;
+  --bg-2: #1a1a1a;
+  --panel: #111111;
+  --muted: #8b8b8b;
+  --text: #e6e6e6;
 }
 
-/* ===== Corpo da página ===== */
+/* Base */
 body {
-    font-family: Arial, Helvetica, sans-serif; /* Fonte clean */
-    background-color: #f0f2f5; /* Cinza suave */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Altura total da tela */
+  font-family: "Poppins", "Inter", Arial, sans-serif;
+  background: linear-gradient(150deg, var(--bg-1) 30%, var(--bg-2) 100%);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
-/* ===== Container do formulário ===== */
+/* Container */
 .login-container {
-    width: 100%;
-    max-width: 400px; /* Limita o tamanho em telas grandes */
-    padding: 30px 25px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+  border-radius: 12px;
+  padding: 36px 30px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.7), 0 0 18px rgba(230,115,0,0.06);
+  animation: containerEntrance 420ms cubic-bezier(.2,.9,.3,1);
 }
 
-/* ===== Formulário ===== */
-form {
-    text-align: left;
+/* Header */
+.login-header { text-align: center; margin-bottom: 18px; }
+.login-header svg { display: block; margin: 0 auto 10px; width: 280px; height: 85px; cursor: default; }
+.login-header h1 {
+  color: var(--accent);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: 0.6px;
+}
+.login-header p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 0;
 }
 
-/* Grupo de inputs */
-.input-group {
-    margin-bottom: 15px;
-}
+/* Formulario */
+form { margin-top: 6px; }
 
+/* Input group */
+.input-group { margin-bottom: 16px; text-align: left; }
 .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #444;
-    font-size: 0.9em;
+  display: block;
+  color: #cfcfcf;
+  margin-bottom: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
 }
-
-.input-group input[type="text"],
-.input-group input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-    transition: border-color 0.2s, box-shadow 0.2s;
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #222;
+  background: linear-gradient(180deg, #0f0f0f, #121212);
+  color: var(--text);
+  font-size: 0.98rem;
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 100ms ease;
 }
-
-/* Foco sutil */
+.input-group input::placeholder { color: #555; }
 .input-group input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(230,115,0,0.18);
+  transform: translateY(-1px);
 }
 
-/* ===== Botão ===== */
-.btn-login {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-login:hover {
-    background-color: #0056b3;
-    transform: translateY(-1px); /* Feedback visual sutil */
-}
-
-/* ===== Esqueceu a senha ===== */
-.forgot-password {
-    text-align: right;
-    margin: 5px 0 15px 0;
-    font-size: 0.85em;
-}
-
+/* Forgot */
+.forgot-password { text-align: right; margin-bottom: 12px; }
 .forgot-password a {
-    color: #007bff;
-    text-decoration: none;
-    transition: text-decoration 0.2s;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.forgot-password a:hover { text-decoration: underline; }
+
+/* Button */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  color: #0b0b0b;
+  box-shadow: 0 6px 18px rgba(184,92,0,0.12), inset 0 -2px 0 rgba(0,0,0,0.05);
+  transition: transform 120ms ease, box-shadow 220ms ease;
+}
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(184,92,0,0.18);
 }
 
-.forgot-password a:hover {
-    text-decoration: underline;
+/* Divider */
+hr { border: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent); margin: 22px 0; }
+
+/* Footer */
+footer { text-align: center; font-size: 0.82rem; color: #888; line-height: 1.4; }
+footer .warning-text { color: var(--accent); font-weight: 700; margin-bottom: 6px; display:block; }
+
+/* Small devices */
+@media (max-width: 480px) {
+  .login-container { padding: 26px 18px; width: 96%; }
+  .login-header svg { width: 220px; height: 68px; }
+  .login-header h1 { font-size: 1.02rem; }
 }
 
-/* ===== Linha separadora ===== */
-hr {
-    border: 0;
-    height: 1px;
-    background-color: #e0e0e0;
-    margin: 20px 0;
+/* Entrance animation */
+@keyframes containerEntrance {
+  from { opacity: 0; transform: translateY(10px) scale(0.998); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ===== Rodapé ===== */
-footer {
-    font-size: 0.75em;
-    color: #888;
-    line-height: 1.4;
-    text-align: center;
-}
-
-footer p.warning-text {
-    font-weight: bold; 
-    color: #555; 
-}
-
-/* ===== Responsividade mínima ===== */
-@media (max-width: 450px) {
-    .login-container {
-        padding: 25px 20px;
-    }
+/* Optional: subtle background noise for realism (unobtrusive) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(transparent 96%, rgba(255,255,255,0.01) 100%);
+  opacity: 0.04;
+  mix-blend-mode: overlay;
 }
