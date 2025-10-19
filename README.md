@@ -191,7 +191,7 @@ Consulte o arquivo `LICENSE` para mais detalhes.
 ## Autor
 
 **Stheffanny Nascimento**
-Engenharia de Computação UEFS
-Cibersegurança • Forense Digital • Engenharia Reversa
+*Engenharia de Computação UEFS
+*Cibersegurança, Forense Digital, Engenharia Reversa
 
 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
