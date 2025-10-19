@@ -1,8 +1,7 @@
-# Shadow Sink: Operação Espelho
+# 🕶️ Shadow Sink — Operação Espelho
 
-> "Não é um site. É uma sala de interrogatório digital."
-
----
+> "Não é um site. É uma sala de interrogatório digital."  
+> “Cada clique é uma confissão. Cada linha de código, um interrogatório.”
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
@@ -11,42 +10,28 @@
 
 ---
 
-## Visão Geral
+## 🧠 Visão Geral
 
 **Shadow Sink** é um honeypot interativo desenvolvido em **Flask**, projetado para capturar, registrar e reproduzir o comportamento de invasores em páginas de login falsas.  
-Ele combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para criar um registro completo da interação do atacante — do clique à digitação.
+Combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para registrar cada detalhe da interação do atacante — do clique à digitação.
 
-Este projeto foi criado para **analistas, pentesters e estudantes** que desejam compreender a psicologia e a técnica por trás de tentativas de intrusão, sem riscos reais.
-
----
-
-## Principais Funcionalidades
-
-### Modo Espelho  
-Além de capturar entradas, o sistema grava padrões temporais como o tempo entre teclas, latência entre cliques e velocidade de digitação.  
-Esses dados permitem criar uma **assinatura de interação** (*behavior fingerprint*) capaz de treinar modelos de detecção de bots e realizar replays precisos das sessões.
-
-### Replay Visual 2.0  
-Transforma logs em uma linha do tempo animada da interação do atacante.  
-No dashboard, cada evento (`keypress`, `click`) é reproduzido visualmente na interface falsa, criando uma simulação em tempo real do ataque.
-
-### Fingerprints e Metadados  
-No momento do acesso, o honeypot captura **User-Agent**, **resolução da tela**, **timezone**, **idioma** e **coordenadas de clique**.  
-Todos os dados são armazenados em uma tabela `fingerprints`, criando um perfil de interação único para cada sessão.
-
-### Módulo Sentinel (Forense Integrado)  
-Sistema responsável por calcular o **hash SHA256** de cada sessão e evento, gerar relatórios automáticos em JSON e exportar um “saco de provas” com logs, hash e timestamp, garantindo a integridade forense dos dados coletados.
-
-### Modo Treino  
-Permite alternar entre:
-- `capture_mode = True`: coleta real de dados de interação;  
-- `training_mode = True`: simula logs falsos para aprendizado e demonstrações.  
-
-Cria um ambiente seguro para **prática forense** e **cibereducação**.
+Destinado a **analistas, pentesters e estudantes** que buscam compreender a psicologia e a técnica por trás das intrusões, sem riscos reais.
 
 ---
 
-## Estrutura do Projeto
+## ⚙️ Principais Funcionalidades
+
+- **🪞 Modo Espelho** — captura tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
+- **🎞️ Replay Visual 2.0** — converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
+- **🧩 Fingerprints e Metadados** — coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
+- **🧾 Módulo Sentinel (Forense Integrado)** — gera hashes SHA256 por evento, relatórios JSON e um “saco de provas” completo com logs e timestamps.  
+- **🎓 Modo Treino** — alterna entre:
+  - `capture_mode = True`: coleta real de dados;
+  - `training_mode = True`: simulação de sessões para demonstrações.
+
+---
+
+## 🧩 Estrutura do Projeto
 
 ```bash
 shadow-sink/
@@ -79,21 +64,75 @@ shadow-sink/
     └── ...
 ```
 
-## Como Executar
 
 
-1. ** Clone o repositório**
+## 🚧 Status do Desenvolvimento
+
+> **Fase atual:** Arquitetura — *Sprint 1/6*  
+> O projeto está em estruturação. O foco é construir a fundação e a fachada antes do sistema forense.
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Módulo / Sprint</th>
+    <th>Descrição</th>
+  </tr>
+  <tr>
+    <td>✅ Concluído</td>
+    <td><b>Arquitetura Core</b></td>
+    <td>Inicialização do Flask com Blueprints (<code>app.py</code>, <code>app/routes.py</code>). Rotas modulares implementadas.</td>
+  </tr>
+  <tr>
+    <td>✅ Concluído</td>
+    <td><b>Sprint 1: A Fachada</b></td>
+    <td>Interface de login falsa (<code>login.html</code>) finalizada, estética Noir/Corporativa ("FortPay").</td>
+  </tr>
+  <tr>
+    <td>⚠️ Captura Ativa</td>
+    <td><b>Sprint 2: A Armadilha</b></td>
+    <td>Rotas de login capturam credenciais via POST, simulam falha e registram IP — dados ainda salvos apenas em log de console.</td>
+  </tr>
+  <tr>
+    <td>❌ Pendente</td>
+    <td><b>Sprint 3: A Sala de Interrogatório</b></td>
+    <td>Persistência de dados (<code>SQLite3</code>) não implementada. Projeto pausado nesta etapa.</td>
+  </tr>
+  <tr>
+    <td>🎯 Próximo Objetivo</td>
+    <td><b>Pausa de Fim de Ano</b></td>
+    <td>Retomada em <b>22 de dezembro</b>. Prioridade: módulo <code>db.py</code> para persistência e ativação da camada forense.</td>
+  </tr>
+</table>
+
+---
+
+## 🛠️ Tecnologias Principais
+
+| Categoria     | Tecnologias |
+|----------------|-------------|
+| **Backend** | Python, Flask |
+| **Persistência** | SQLite3 *(em breve)* |
+| **Forense** | Módulo Sentinel (SHA256 Hashing, JSON Reports) |
+| **Análise** | Replay Visual 2.0 (JS/HTML), Fingerprinting Comportamental |
+
+---
+
+## 💻 Como Executar (modo desenvolvimento)
+
+1. **Clone o repositório**
 
    ```bash
    git clone https://github.com/StheffannyNAlves/project-shadowsink.git
-   cd shadow-sink
-   ```
-
+   cd project-shadowsink
+  ```
 
 2. **Crie e ative o ambiente virtual**
+
    ```bash
    python3 -m venv venv
-   source venv/bin/activate
+   source venv/bin/activate        # Linux/macOS
+   # PowerShell (Windows)
+   # .\venv\Scripts\activate
    ```
 
 3. **Instale as dependências**
@@ -104,16 +143,19 @@ shadow-sink/
 
 4. **Configure a aplicação Flask**
 
-   * Linux/macOS:
+   *Linux/macOS:*
 
-     ```bash
-     export FLASK_APP=app
-     ```
-   * Windows (PowerShell):
+   ```bash
+   export FLASK_APP=app
+   export FLASK_ENV=development
+   ```
 
-     ```bash
-     $env:FLASK_APP = "app"
-     ```
+   *Windows (PowerShell):*
+
+   ```powershell
+   $env:FLASK_APP = "app"
+   $env:FLASK_ENV = "development"
+   ```
 
 5. **Execute a aplicação**
 
@@ -121,55 +163,57 @@ shadow-sink/
    flask run
    ```
 
-O honeypot estará acessível em **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
+   O honeypot estará acessível em:
+   👉 **[http://127.0.0.1:5000](http://127.0.0.1:5000)**
 
 ---
 
-## Identidade Visual
+## 🎨 Identidade Visual
 
-O projeto segue o tema de uma **“sala de interrogatório digital”**, com uma estética minimalista e sombria.
-A paleta de cores usa **preto**, **cinza escuro** e **laranja queimado** (`#ff8c00`).
-A tipografia recomendada é monoespaçada (como **Consolas** ou **JetBrains Mono**).
-O dashboard deve manter um estilo **noir**, técnico e limpo, priorizando legibilidade e contraste.
-
----
-
-## Extensões Futuras
-
-* Integração com **ELK Stack (ElasticSearch + Kibana)** para visualização avançada de eventos.
-* **API REST** para análise remota (`/api/sessions`).
-* Deploy em container **Docker** isolado.
-* Módulo **"AI Witness"** para sumarizar sessões capturadas usando IA.
-* Integração opcional com **sandbox local**, simulando ataques automatizados para treino de resposta.
-* Ferramenta CLI para análise forense offline das evidências geradas (`shadowcli analyze evidence_*.json`).
+Tema: **Sala de Interrogatório Digital**
+Estilo: minimalista, sombrio, técnico.
+Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
+Fonte: monoespaçada (Consolas, JetBrains Mono).
+Foco em contraste, legibilidade e atmosfera “noir corporativa”.
 
 ---
 
-## Aviso de Segurança
+## 🔮 Extensões Futuras
 
-Este projeto é uma ferramenta de **pesquisa e educação em cibersegurança**, não um sistema de defesa ativo.
-**Nunca** o execute em redes públicas, ambientes de produção ou máquinas corporativas.
-Use apenas em **laboratórios isolados** (máquinas virtuais ou redes sandbox).
+* Integração com **ELK Stack** (ElasticSearch + Kibana)
+* **API REST** (`/api/sessions`) para análise remota
+* **Docker** container para deploy isolado
+* **AI Witness** — sumarização automatizada via IA
+* **Sandbox local** para simulação de ataques automatizados
+* **CLI Forense** (`shadowcli analyze evidence_*.json`)
 
 ---
 
-## Licença
+## ⚠️ Aviso de Segurança
+
+Este projeto é **apenas para pesquisa e educação em cibersegurança**.
+**Nunca** execute em redes públicas, ambientes de produção ou máquinas corporativas.
+Utilize **somente em laboratórios isolados** (máquinas virtuais ou redes sandbox).
+
+O autor **não se responsabiliza por uso indevido**.
+
+---
+
+## 📜 Licença
 
 Distribuído sob a licença **MIT**.
-Consulte o arquivo `LICENSE` para mais informações.
+Consulte o arquivo `LICENSE` para mais detalhes.
 
 ---
 
-## Autor
+## 👩🏿‍💻 Autor
 
 **Stheffanny Nascimento**
 Engenharia de Computação — UEFS
 Cibersegurança • Forense Digital • Engenharia Reversa
-Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
+
+📦 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
 
 ---
-
-> “Cada clique é uma confissão.
-> Cada linha de código, um interrogatório.”
 
 
