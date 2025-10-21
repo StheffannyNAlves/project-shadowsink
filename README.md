@@ -5,7 +5,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
-![SQLite](https://img.shields.io/badge/sqlite-07405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 ## Visão Geral
@@ -91,8 +91,8 @@ shadow-sink/
   </tr>
   <tr>
     <td>🎯 Próximo Objetivo</td>
-    <td><b>Pausa de Fim de Ano</b></td>
-    <td>Retomada em <b>22 de dezembro</b>. Prioridade: módulo <code>db.py</code> para persistência e ativação da camada forense.</td>
+    <td><b>Pausa</b></td>
+    <td>Retomada em <b>28 de novembro</b>. Prioridade: módulo <code>db.py</code> para persistência e ativação da camada forense.</td>
   </tr>
 </table>
 
@@ -101,7 +101,7 @@ shadow-sink/
 | Categoria     | Tecnologias |
 |----------------|-------------|
 | **Backend** | Python, Flask |
-| **Persistência** | SQLite3 *(em breve)* |
+| **Persistência** | PostgreSQL *(em breve)* |
 | **Forense** | Módulo Sentinel (SHA256 Hashing, JSON Reports) |
 | **Análise** | Replay Visual 2.0 (JS/HTML), Fingerprinting Comportamental |
 
