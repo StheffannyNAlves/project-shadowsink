@@ -159,11 +159,11 @@ shadow-sink/
 
 ## Identidade Visual
 
-*Tema: **Sala de Interrogatório Digital**
-*Estilo: minimalista, técnico.
-*Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
-*Fonte: monoespaçada (Consolas, JetBrains Mono).
-*Foco em contraste, legibilidade e atmosfera "noir corporativa".
+**Tema: **Sala de Interrogatório Digital**
+* Estilo: minimalista, técnico.
+* Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
+* Fonte: monoespaçada (Consolas, JetBrains Mono).
+* Foco em contraste, legibilidade e atmosfera "noir corporativa".
 
 ## Extensões Futuras
 
