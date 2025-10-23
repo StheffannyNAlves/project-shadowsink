@@ -69,38 +69,45 @@ shadow-sink/
 > **Status:** PAUSADO (Pausa Estratégica para exames).
 > **Retomada:** 22 de Dezembro de 2025.
 
-\<table\>
-\<tr\>
-\<th\>Status\</th\>
-\<th\>Módulo / Sprint\</th\>
-\<th\>Descrição\</th\>
-\</tr\>
-\<tr\>
-\<td\>✅ Concluído\</td\>
-\<td\>\<b\>Sprint 1: A Fachada\</b\>\</td\>
-\<td\>Interface de login falsa (\<code\>login.html\</code\>) "FortPay" finalizada. Estética Noir/Corporativa.\</td\>
-\</tr\>
-\<tr\>
-\<td\>✅ Concluído\</td\>
-\<td\>\<b\>Sprint 2: A Armadilha\</b\>\</td\>
-\<td\>\<code\>capture.js\</code\> captura eventos de digitação e POST. \<code\>routes.py\</code\> recebe os dados brutos e simula falha de login.\</td\>
-\</tr\>
-\<tr\>
-\<td\>🎯 Próximo Objetivo\</td\>
-\<td\>\<b\>Sprint 3: A Exfiltração\</b\>\</td\>
-\<td\>Implementar \<code\>exfiltrator.py\</code\>. Configurar o Sensor Flask para enviar logs JSON para uma fila (RabbitMQ) ou syslog.\</td\>
-\</tr\>
-\<tr\>
-\<td\>❌ Pendente\</td\>
-\<td\>\<b\>Sprint 4: O Coletor & DB\</b\>\</td\>
-\<td\>(Em novo repo) Criar o \<i\>worker\</i\> que consome da fila e persiste os dados no PostgreSQL (Docker) usando Transações.\</td\>
-\</tr\>
-\<tr\>
-\<td\>❌ Pendente\</td\>
-\<td\>\<b\>Sprint 5: Módulo Sentinel\</b\>\</td\>
-\<td\>Implementar a lógica da \<b\>Cadeia de Hashes (Log Chaining)\</b\> no Coletor.\</td\>
-\</tr\>
-\</table\>
+>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Módulo / Sprint</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>✅ Concluído</td>
+      <td><strong>Sprint 1: A Fachada</strong></td>
+      <td>Interface de login falsa (<code>login.html</code>) "FortPay" finalizada. Estética Noir/Corporativa.</td>
+    </tr>
+    <tr>
+      <td>✅ Concluído</td>
+      <td><strong>Sprint 2: A Armadilha</strong></td>
+      <td><code>capture.js</code> captura eventos de digitação e faz POST. <code>routes.py</code> recebe os dados brutos e simula falha de login.</td>
+    </tr>
+    <tr>
+      <td>🎯 Próximo Objetivo</td>
+      <td><strong>Sprint 3: A Exfiltração</strong></td>
+      <td>Implementar <code>exfiltrator.py</code>. Configurar o Sensor Flask para enviar logs JSON para uma fila (RabbitMQ) ou syslog.</td>
+    </tr>
+    <tr>
+      <td>❌ Pendente</td>
+      <td><strong>Sprint 4: O Coletor &amp; DB</strong></td>
+      <td>(Em novo repositório) Criar o <em>worker</em> que consome da fila e persiste os dados no PostgreSQL (Docker) usando transações.</td>
+    </tr>
+    <tr>
+      <td>❌ Pendente</td>
+      <td><strong>Sprint 5: Módulo Sentinel</strong></td>
+      <td>Implementar a lógica da <strong>Cadeia de Hashes (Log Chaining)</strong> no Coletor.</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Tecnologias Principais
 
