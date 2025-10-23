@@ -1,5 +1,27 @@
+# --- Ambiente Virtual e Caches ---
+# Ignora o ambiente virtual
 venv/
+
+# Ignora os caches de bytecode do Python
 __pycache__/
 *.pyc
+
+# --- Configuração e Segredos ---
+# Ignora arquivos de variáveis de ambiente
 .env
+
+# Ignora a pasta 'instance' do Flask (se usada para configs)
 instance/
+
+# --- Logs e Artefatos Gerados ---
+# Ignora o log do honeypot
+honeypot.log
+
+# --- Lixo de Prototipagem (Defensivo) ---
+# Garante que bancos de dados locais nunca sejam adicionados
+*.db
+*.sqlite3
+data/
+
+# Garante que relatórios locais nunca sejam adicionados
+reports/
