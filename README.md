@@ -7,6 +7,7 @@
 ![Flask](https://img.shields.io/badge/flask-000000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
 
 
 
@@ -50,7 +51,7 @@ shadow-sink/
 │
 ├── templates/
 │   ├── login.html        # A fachada / armadilha
-│   └── dashboard.html    # (Visão futura para o Coletor)
+│   
 │
 ├── venv/
 ├── requirements.txt
@@ -58,7 +59,8 @@ shadow-sink/
 └── run.py                # Ponto de entrada do Gunicorn/Flask
 ```
 
-*Nota: Os módulos de persistência (`db.py`, `models.py`) e forense (`sentinel.py`) **não** existem neste repositório. Eles residem no servidor **Coletor** seguro.*
+*Nota: Os módulos de persistência (`db.py`, `models.py`), forense (`sentinel.py`), replay(`replay.py`) os templates de análise (`dashboard.html`, `evidence.html`) não existem neste repositório. **não** existem neste repositório.* 
+*Eles residem em um repositório **privado** e separado, o shadow-sink-collector, que é o único componente com credenciais para acessar o banco de dados.*
 
 ## Status do Desenvolvimento
 
