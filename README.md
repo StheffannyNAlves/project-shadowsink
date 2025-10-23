@@ -9,10 +9,6 @@
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 
-# 🕶️ Shadow Sink: Operação Espelho
-
-> "Não é um site. É uma sala de interrogatório digital."
-> "Cada clique é uma confissão. Cada linha de código, um interrogatório."
 
 ## Visão Geral
 
