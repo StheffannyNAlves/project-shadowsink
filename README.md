@@ -8,178 +8,165 @@
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-323330.svg?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
+
+# 🕶️ Shadow Sink: Operação Espelho
+
+> "Não é um site. É uma sala de interrogatório digital."
+> "Cada clique é uma confissão. Cada linha de código, um interrogatório."
+
 ## Visão Geral
 
-**Shadow Sink** é um honeypot interativo desenvolvido em **Flask**, projetado para capturar, registrar e reproduzir o comportamento de invasores em páginas de login falsas.  
-Combina **engenharia forense**, **fingerprinting comportamental** e **replay visual** para registrar cada detalhe da interação do atacante do clique à digitação.
+**Shadow Sink** é um honeypot de alta interação focado em análise forense e comportamental. Desenvolvido em **Flask** e **PostgreSQL**, ele é projetado não apenas para *o quê* um invasor digita, mas *como* ele digita.
 
-Destinado a **analistas, pentesters e estudantes** que buscam compreender a psicologia e a técnica por trás das intrusões, sem riscos reais.
+O sistema captura cada evento de digitação, movimento do mouse e metadado do navegador para construir uma "assinatura de interação" (fingerprint comportamental). Esses dados são então exfiltrados para um coletor seguro, onde são protegidos por uma cadeia de custódia forense e disponibilizados para análise e replay.
+
+Destina-se a analistas de segurança, pesquisadores e *pentesters* que buscam compreender as Táticas, Técnicas e Procedimentos (TTPs) de adversários em tempo real.
+
+## Arquitetura Estratégica: Sensor vs. Coletor
+
+Para garantir a sobrevivência das evidências, o Shadow Sink opera em uma arquitetura desacoplada:
+
+1.  **O Sensor (Este Repositório):** Um aplicativo Flask "descartável" que serve a fachada (`login.html`). Sua **única** função é capturar eventos de interação e *exfiltrá-los* imediatamente (via `rsyslog` ou Fila de Mensagens, ex: RabbitMQ). Ele **não** possui credenciais de banco de dados. Se o sensor for comprometido, nenhuma evidência é perdida.
+2.  **O Coletor (Servidor Seguro):** Um *worker* de back-end (em um host/rede separada) que escuta a fila de mensagens. Ele é o **único** componente com acesso ao PostgreSQL. Ele recebe os dados brutos do Sensor, os valida, executa o Módulo Sentinel (hashing) e os persiste no banco de dados usando transações atômicas.
 
 ## Principais Funcionalidades
 
-- **Modo Espelho** coleta tempos entre teclas, latência entre cliques e velocidade de digitação para criar uma assinatura comportamental.  
-- **Replay Visual 2.0** converte logs em uma linha do tempo animada, simulando a sessão do atacante em tempo real.  
-- **Fingerprints e Metadados** coleta `User-Agent`, resolução, timezone, idioma e coordenadas de clique.  
-- **Módulo Sentinel (Forense Integrado)** gera hashes SHA256 por evento, relatórios JSON e um "saco de provas" completo com logs e timestamps.  
-- **Modo Treino** alterna entre:
-  - `capture_mode = True`: coleta real de dados;
-  - `training_mode = True`: simulação de sessões para demonstrações.
+  - **Análise de Ritmo (Keystroke Dynamics):** Em vez de latência básica, o "Modo Espelho" analisa o *ritmo* da digitação. Ele foca em digrafos (ex: `t-h`), trigrafos (`t-h-e`) e heurísticas humanas (uso de `Backspace`) para diferenciar padrões cognitivos de *jitter* aleatório gerado por bots.
+  - **Cadeia de Custódia Forense (Log Chaining):** O "Módulo Sentinel" não gera apenas hashes. Ele implementa uma **Cadeia de Hashes**: cada relatório de sessão JSON salvo contém o hash SHA256 da sessão *anterior*. Isso cria uma cadeia de custódia que garante a *integridade cronológica*, provando que os logs não foram adulterados ou inseridos retroativamente.
+  - **Replay Visual 2.0:** Reconstrói logs JSON em uma linha do tempo animada, permitindo que o analista "reassista" a sessão do invasor em tempo real, observando digitação, erros e correções.
+  - **Fingerprinting de Metadados:** Coleta passiva de `User-Agent`, resolução de tela, `timezone`, idioma do navegador e outros metadados para identificar o ambiente do adversário.
+  - **Modo Treino:** Permite a simulação de logs falsos para testes de pipeline, demonstrações e desenvolvimento do módulo de replay.
 
-## Estrutura do Projeto
+## Estrutura do Projeto (O Sensor)
 
 ```bash
 shadow-sink/
 ├── app/
-│   ├── __init__.py
-│   ├── routes.py
-│   ├── models.py
-│   ├── db.py
-│   ├── replay.py
-│   ├── sentinel.py
+│   ├── __init__.py         # Inicialização do Flask e Blueprints
+│   ├── routes.py         # As rotas de captura (ex: /login)
+│   ├── exfiltrator.py    # Lógica para enviar dados (syslog/RabbitMQ)
 │   └── utils/
-│       └── fingerprint.py
+│       └── fingerprint.py  # Funções de coleta de metadados
 │
 ├── static/
-│   ├── css/style.css
-│   └── js/capture.js
+│   ├── css/style.css     # Estilo "Noir Corporativo" (FortPay)
+│   └── js/capture.js     # JS para capturar eventos (keydown, mouse)
 │
 ├── templates/
-│   ├── login.html
-│   ├── dashboard.html
-│   └── ...
+│   ├── login.html        # A fachada / armadilha
+│   └── dashboard.html    # (Visão futura para o Coletor)
 │
-├── data/
-│   └── database.db
-│
-├── reports/
-│   └── evidence_session.json
-│
-└── docs/
-    └── ...
+├── venv/
+├── requirements.txt
+├── config.py
+└── run.py                # Ponto de entrada do Gunicorn/Flask
 ```
+
+*Nota: Os módulos de persistência (`db.py`, `models.py`) e forense (`sentinel.py`) **não** existem neste repositório. Eles residem no servidor **Coletor** seguro.*
 
 ## Status do Desenvolvimento
 
-> **Fase atual:** Arquitetura *Sprint 1/6*  
-> O projeto está em estruturação. O foco é construir a fundação e a fachada antes do sistema forense.
+> **Status:** PAUSADO (Pausa Estratégica para exames).
+> **Retomada:** 22 de Dezembro de 2025.
 
-<table>
-  <tr>
-    <th>Status</th>
-    <th>Módulo / Sprint</th>
-    <th>Descrição</th>
-  </tr>
-  <tr>
-    <td>✅ Concluído</td>
-    <td><b>Arquitetura Core</b></td>
-    <td>Inicialização do Flask com Blueprints (<code>app.py</code>, <code>app/routes.py</code>). Rotas modulares implementadas.</td>
-  </tr>
-  <tr>
-    <td>✅ Concluído</td>
-    <td><b>Sprint 1: A Fachada</b></td>
-    <td>Interface de login falsa (<code>login.html</code>) finalizada, estética Noir/Corporativa ("FortPay").</td>
-  </tr>
-  <tr>
-    <td>⚠️ Captura Ativa</td>
-    <td><b>Sprint 2: A Armadilha</b></td>
-    <td>Rotas de login capturam credenciais via POST, simulam falha e registram IP dados ainda salvos apenas em log de console.</td>
-  </tr>
-  <tr>
-    <td>❌ Pendente</td>
-    <td><b>Sprint 3: A Sala de Interrogatório</b></td>
-    <td>Persistência de dados (<code>SQLite3</code>) não implementada. Projeto pausado nesta etapa.</td>
-  </tr>
-  <tr>
-    <td>🎯 Próximo Objetivo</td>
-    <td><b>Pausa</b></td>
-    <td>Retomada em <b>28 de novembro</b>. Prioridade: módulo <code>db.py</code> para persistência e ativação da camada forense.</td>
-  </tr>
-</table>
+\<table\>
+\<tr\>
+\<th\>Status\</th\>
+\<th\>Módulo / Sprint\</th\>
+\<th\>Descrição\</th\>
+\</tr\>
+\<tr\>
+\<td\>✅ Concluído\</td\>
+\<td\>\<b\>Sprint 1: A Fachada\</b\>\</td\>
+\<td\>Interface de login falsa (\<code\>login.html\</code\>) "FortPay" finalizada. Estética Noir/Corporativa.\</td\>
+\</tr\>
+\<tr\>
+\<td\>✅ Concluído\</td\>
+\<td\>\<b\>Sprint 2: A Armadilha\</b\>\</td\>
+\<td\>\<code\>capture.js\</code\> captura eventos de digitação e POST. \<code\>routes.py\</code\> recebe os dados brutos e simula falha de login.\</td\>
+\</tr\>
+\<tr\>
+\<td\>🎯 Próximo Objetivo\</td\>
+\<td\>\<b\>Sprint 3: A Exfiltração\</b\>\</td\>
+\<td\>Implementar \<code\>exfiltrator.py\</code\>. Configurar o Sensor Flask para enviar logs JSON para uma fila (RabbitMQ) ou syslog.\</td\>
+\</tr\>
+\<tr\>
+\<td\>❌ Pendente\</td\>
+\<td\>\<b\>Sprint 4: O Coletor & DB\</b\>\</td\>
+\<td\>(Em novo repo) Criar o \<i\>worker\</i\> que consome da fila e persiste os dados no PostgreSQL (Docker) usando Transações.\</td\>
+\</tr\>
+\<tr\>
+\<td\>❌ Pendente\</td\>
+\<td\>\<b\>Sprint 5: Módulo Sentinel\</b\>\</td\>
+\<td\>Implementar a lógica da \<b\>Cadeia de Hashes (Log Chaining)\</b\> no Coletor.\</td\>
+\</tr\>
+\</table\>
 
 ## Tecnologias Principais
 
-| Categoria     | Tecnologias |
-|----------------|-------------|
-| **Backend** | Python, Flask |
-| **Persistência** | PostgreSQL *(em breve)* |
-| **Forense** | Módulo Sentinel (SHA256 Hashing, JSON Reports) |
-| **Análise** | Replay Visual 2.0 (JS/HTML), Fingerprinting Comportamental |
+| Categoria | Tecnologias |
+|---|---|
+| **Sensor (Frontend)** | Flask, JavaScript (Vanilla) |
+| **Arquitetura** | RabbitMQ (ou `rsyslog-ng`) para desacoplamento |
+| **Coletor (Backend)** | Python (Worker), PostgreSQL (via Docker) |
+| **Forense** | Módulo Sentinel (SHA256 Log Chaining), JSON Reports |
+| **Análise** | Replay Visual (JS/HTML), Keystroke Dynamics |
 
-## 💻 Como Executar (modo desenvolvimento)
+## 💻 Como Executar (Sensor em Modo Desenvolvimento)
 
-1. **Clone o repositório**
+**Atenção:** Estas instruções executam apenas o **Sensor** localmente para fins de desenvolvimento da interface.
 
-```bash
-   git clone https://github.com/StheffannyNAlves/project-shadowsink.git
-   cd project-shadowsink
-```
+1.  **Clone o repositório**
 
-2. **Crie e ative o ambiente virtual**
+    ```bash
+    git clone https://github.com/StheffannyNAlves/project-shadowsink.git
+    cd project-shadowsink
+    ```
 
-```bash
-   python3 -m venv venv
-   
-     # Linux/macOS
-   source venv/bin/activate        
-   
-     # PowerShell (Windows)
-   .\venv\Scripts\activate
-```
+2.  **Crie e ative o ambiente virtual**
 
-3. **Instale as dependências**
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate  # (Linux/macOS)
+    .\venv\Scripts\activate   # (Windows PowerShell)
+    ```
 
- ```bash
-   pip install -r requirements.txt
-```
+3.  **Instale as dependências**
 
-4. **Configure a aplicação Flask**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-   *Linux/macOS:*
+4.  **Configure a aplicação Flask**
 
-   ```bash
-   export FLASK_APP=app
-   export FLASK_ENV=development
-   ```
+    ```bash
+    export FLASK_APP=run.py
+    export FLASK_ENV=development
+    ```
 
-   *Windows (PowerShell):*
+5.  **Execute o Sensor**
 
-   ```powershell
-   $env:FLASK_APP = "app"
-   $env:FLASK_ENV = "development"
-   ```
+    ```bash
+    flask run
+    ```
 
-5. **Execute a aplicação**
+    O honeypot (sensor) estará acessível em: `http://127.0.0.1:5000`
 
-   ```bash
-   flask run
-   ```
+## Roadmap de Análise (Extensões Futuras)
 
-   O honeypot estará acessível em:
-   👉 **[https://127.0.0.1:5000](https://127.0.0.1:5000)**
-
-## Identidade Visual
-
-* Tema: **Sala de Interrogatório Digital**
-* Estilo: minimalista, técnico.
-* Cores: preto, cinza escuro e laranja queimado (`#ff8c00`).
-* Fonte: monoespaçada (Consolas, JetBrains Mono).
-* Foco em contraste, legibilidade e atmosfera "noir corporativa".
-
-## Extensões Futuras
-
-* Integração com **ELK Stack** (ElasticSearch + Kibana)
-* **API REST** (`/api/sessions`) para análise remota
-* **Docker** container para deploy isolado
-* **AI Witness** sumarização automatizada via IA
-* **Detecção de Bots (RL)**: Implementação de algoritmos de Reinforcement Learning para analisar padrões de digitação e aprimorar, em tempo real, a detecção entre bots e humanos.
-* **Sandbox local** para simulação de ataques automatizados
-* **CLI Forense** (`shadowcli analyze evidence_*.json`)
+  - **Detecção de Bots (Machine Learning):**
+      - **Fase 1 (Classificação):** Treinar modelos (Random Forest/SVM) sobre as *features* estatísticas extraídas da Análise de Ritmo (digrafos, backspace, etc.).
+      - **Fase 2 (Análise Sequencial):** Implementar modelos (LSTM/GRU) para classificar a *sequência bruta* de eventos de digitação, detectando padrões temporais complexos.
+  - **AI Witness:** Um módulo de IA (LLM) para gerar resumos executivos automatizados de cada sessão de ataque.
+  - **Integração ELK Stack:** Envio dos relatórios JSON do Coletor para o ElasticSearch para visualização e agregação no Kibana.
+  - **API REST Forense:** Uma API segura no Coletor (`/api/sessions/<id>`) para puxar relatórios e dados de replay.
+  - **Deploy em Docker:** Containerização completa do *Sensor* e do *Coletor* para deploy rápido e isolado.
 
 ## Aviso de Segurança
 
 Este projeto é **apenas para pesquisa e educação em cibersegurança**.
 **Nunca** execute em redes públicas, ambientes de produção ou máquinas corporativas.
-Utilize **somente em laboratórios isolados** (máquinas virtuais ou redes sandbox).
+Utilize **somente em laboratórios isolados** (Máquinas Virtuais ou redes Sandbox).
 
 O autor **não se responsabiliza por uso indevido**.
 
@@ -191,7 +178,7 @@ Consulte o arquivo `LICENSE` para mais detalhes.
 ## Autor
 
 **Stheffanny Nascimento**
-Engenharia de Computação UEFS
--Cibersegurança, Forense Digital, Engenharia Reversa
+Engenharia de Computação - UEFS
+\-Cibersegurança, Forense Digital, Engenharia Reversa
 
 Repositório oficial: [github.com/StheffannyNAlves/project-shadowsink](#)
