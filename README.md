@@ -59,7 +59,7 @@ shadow-sink/
 └── run.py                # Ponto de entrada do Gunicorn/Flask
 ```
 
-*Nota: Os módulos de persistência (`db.py`, `models.py`), forense (`sentinel.py`), replay(`replay.py`) os templates de análise (`dashboard.html`, `evidence.html`) não existem neste repositório. **não** existem neste repositório.* 
+*Nota: Os módulos de persistência (`db.py`, `models.py`), forense (`sentinel.py`), replay(`replay.py`), os templates de análise (`dashboard.html`, `evidence.html`) **não** existem neste repositório.* 
 *Eles residem em um repositório **privado** e separado, o shadow-sink-collector, que é o único componente com credenciais para acessar o banco de dados.*
 
 ## Status do Desenvolvimento
